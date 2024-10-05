@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>括号排列生成器</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        #result {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h2>合法括号排列生成器</h2>
+    <label for="num">输入括号对数:</label>
+    <input type="number" id="num" min="1" placeholder="输入数量">
+    <button onclick="generateParentheses()">生成</button>
+
+    <div id="result"></div>
+
+    <script>
+        function generateParentheses() {
+            const num = document.getElementById('num').value;
+            if (num === '' || num <= 0) {
+                alert("请输入有效的括号对数");
+                return;
+            }
+            
+            const resultDiv = document.getElementById('result');
+            resultDiv.innerHTML = ''; // 清空上次结果
+
+            const res = [];
+            generate('', 0, 0, num, res);
+            resultDiv.innerHTML = '<h3>生成的合法括号排列:</h3>' + res.join('<br>');
+        }
+
+        function generate(current, open, close, max, res) {
+            if (current.length === max * 2) {
+                res.push(current);
+                return;
+            }
+
+            if (open < max) {
+                generate(current + '(', open + 1, close, max, res);
+            }
+            if (close < open) {
+                generate(current + ')', open, close + 1, max, res);
+            }
+        }
+    </script>
+</body>
+</html>
