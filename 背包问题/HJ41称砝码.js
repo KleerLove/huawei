@@ -1,3 +1,6 @@
+// new Set([0]) 可以这样初始化set的值为0
+
+
 const rl = require("readline").createInterface({ input: process.stdin });
 var iter = rl[Symbol.asyncIterator]();
 const readline = async () => (await iter.next()).value;
