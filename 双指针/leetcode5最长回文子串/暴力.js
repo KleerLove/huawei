@@ -30,3 +30,18 @@ function longestPalindrome_bruteforce(s) {
 }
 
 console.log(longestPalindrome_bruteforce("babad")); // Output: "bab" or "aba"
+
+
+// 写法更简单的暴力算法
+function longestPalindrome(line) {
+    let result = 0;
+    for (let i = 0; i < line.length; i++) {
+        for (let j = i + 1; j <= line.length; j++) { // 修正边界条件，包含 j
+            const str = line.slice(i, j); // 获取从 i 到 j-1 的子串
+            if (str === str.split('').reverse().join('')) { // 检查是否回文
+                result = Math.max(result, str.length);
+            }
+        }
+    }
+    return result;
+}
