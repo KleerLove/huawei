@@ -1,4 +1,4 @@
-// map 会改变原数组
+// map 不会改变原数组
 
 // padStart() 方法用另一个字符串填充当前字符串（如果需要会重复填充），直到达到给定的长度。
 // 填充是从当前字符串的开头开始的。str.padStart(targetLength, padString)
